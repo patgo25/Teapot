@@ -16,6 +16,7 @@ GameStateManager::~GameStateManager(void)
 
 bool GameStateManager::initalize(int windowWidth, int windowHeight, bool fullscreen)
 {
+	
 	irrlichtDevice = createDevice(video::EDT_OPENGL, core::dimension2d<u32>(windowWidth, windowHeight), 32, fullscreen);
 	if(irrlichtDevice)
 	{

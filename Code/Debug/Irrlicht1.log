@@ -1,0 +1,29 @@
+﻿Build started 29.07.2014 23:22:58.
+     1>Project "C:\Users\Patrick\Desktop\Teapot\Code\Irrlicht1.vcxproj" on node 2 (build target(s)).
+     1>InitializeBuildStatus:
+         Creating "Debug\Irrlicht1.unsuccessfulbuild" because "AlwaysCreate" was specified.
+       ClCompile:
+         All outputs are up-to-date.
+         C:\Program Files\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"StdAfx.h" /Fp"Debug\Irrlicht1.pch" /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt Irrlicht1.cpp
+         Irrlicht1.cpp
+       Link:
+         C:\Program Files\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Patrick\Desktop\Teapot\Code\Debug\Irrlicht1.exe" /INCREMENTAL:NO /NOLOGO /LIBPATH:"C:\Users\Patrick\Desktop\Irrlicht-Projekt\Irrlicht1\irrlicht-1.8.1\lib\Win32-visualstudio" Irrlicht.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Debug\Irrlicht1.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\Patrick\Desktop\Teapot\Code\Debug\Irrlicht1.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Patrick\Desktop\Teapot\Code\Debug\Irrlicht1.lib" /MACHINE:X86 Debug\GameState.obj
+         Debug\GameStateManager.obj
+         Debug\Intro.obj
+         Debug\Irrlicht1.obj
+         Debug\EventReceiver.obj
+         Debug\ResManager.obj
+         Debug\StartMenu.obj
+         Debug\stdafx.obj
+     1>GameState.obj : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/INCREMENTAL:NO' specification
+         Irrlicht1.vcxproj -> C:\Users\Patrick\Desktop\Teapot\Code\Debug\Irrlicht1.exe
+       Manifest:
+         C:\Program Files\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /outputresource:"C:\Users\Patrick\Desktop\Teapot\Code\Debug\Irrlicht1.exe;#1" /manifest Debug\Irrlicht1.exe.intermediate.manifest
+       FinalizeBuildStatus:
+         Deleting file "Debug\Irrlicht1.unsuccessfulbuild".
+         Touching "Debug\Irrlicht1.lastbuildstate".
+     1>Done Building Project "C:\Users\Patrick\Desktop\Teapot\Code\Irrlicht1.vcxproj" (build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:05.17

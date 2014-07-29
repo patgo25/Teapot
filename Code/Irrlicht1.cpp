@@ -7,6 +7,7 @@
 #include "GameState.h"
 #include "GameStateManager.h"
 #include "Intro.h"
+#include "StartMenu.h"
 
 using namespace irr;
 
@@ -34,13 +35,16 @@ int main()
 	if(manager.initalize(800,640,false))
 	{
 		Intro* intro = new Intro("intro");
+		StartMenu* Menu = new StartMenu("menu");
 		manager.addGameState(intro);
+		manager.addGameState(Menu);
 		manager.changeGameState("intro");
-
-		if(manager.getActiveGameState() == intro)
+		if((intro->isFinished()) == true)
 		{
-			
+			manager.changeGameState("menu");
+
 		}
+
 
 		while(device->run())
 		{

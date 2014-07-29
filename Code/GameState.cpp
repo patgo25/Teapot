@@ -37,13 +37,25 @@ void GameState::setActive(bool isactive)
 void GameState::initalize()
 {
 	active = true;
+	finish = false;
 	OnEnter();
 }
 
 void GameState::flush()
 {
 	active = false;
+	finish = true;
 	OnLeave();
+}
+
+void GameState::finished(bool fine)
+{
+	finish = fine;
+}
+
+bool GameState::isFinished()
+{
+	return finish;
 }
 
 void GameState::OnEnter()

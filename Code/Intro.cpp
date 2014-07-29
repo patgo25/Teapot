@@ -1,6 +1,7 @@
 #include "StdAfx.h"
 #include "Intro.h"
 #include "GameStateManager.h"
+#include "GameState.h"
 #include <iostream>
 
 
@@ -52,7 +53,7 @@ void Intro::OnEnter()
 	//cam->setTarget(core::vector3df(-70,30,-60));
 
 	
-	image = device->getVideoDriver()->getTexture("../irrlicht-1.8.1/media/introsprit2.png");
+	image = device->getVideoDriver()->getTexture("../Media/introsprit2.png");
 	size = core::rect<s32>(0,224,475,574);
 	timeStamp = device->getTimer()->getTime();
 }
@@ -65,6 +66,8 @@ void Intro::OnEvent()
 void Intro::OnLeave()
 {
 	//Am Ende des Intros
+	image->drop();
+	device->getVideoDriver()->drop();
 }
 
 void Intro::render()
@@ -77,6 +80,9 @@ void Intro::render()
 
 	else if((time - timeStamp) >= 10000)
 		size = core::rect<s32>(514, 0, 642, 128);
+
+	else if((time - timeStamp) >= 15000)
+		finished(true);
 
 	device->getVideoDriver()->draw2DImage(image, core::position2d<s32>(200,200), size, 0, video::SColor(255,255,255,255), true);
 }

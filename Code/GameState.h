@@ -9,6 +9,7 @@ private:
 	core::stringc	name;
 	bool			active;
 	bool			firstEnter;
+	bool			finish;
 	
 
 public:
@@ -24,6 +25,11 @@ public:
 
 	//Auf wahr setzen wenn es zurzeit läuft
 	void setActive(bool);
+
+	//Wahr wenn der GameState fertig ist (z.B: Intro/Outro)
+	bool isFinished();
+
+	void finished(bool fine);
 
 	//Gamestate inizialisieren (GUI erstellen oder so)
 	virtual void initalize();
