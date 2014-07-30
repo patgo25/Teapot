@@ -39,8 +39,8 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>C:\Users\Patrick\Desktop\Irrlicht-Projekt\Irrlicht1\irrlicht-1.8.1\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\Patrick\Desktop\Irrlicht-Projekt\Irrlicht1\irrlicht-1.8.1\lib\Win32-visualstudio;$(LibraryPath)</LibraryPath>
+    <IncludePath>..\Irrlicht\include;$(IncludePath)</IncludePath>
+    <LibraryPath>..\Irrlicht\lib\Win32-visualstudio;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -55,7 +55,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\Users\Patrick\Desktop\Irrlicht-Projekt\Irrlicht1\irrlicht-1.8.1\lib\Win32-visualstudio;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\Irrlicht\lib\Win32-visualstudio;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>Irrlicht.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
