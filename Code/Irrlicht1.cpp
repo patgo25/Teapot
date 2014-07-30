@@ -12,7 +12,7 @@
 using namespace irr;
 
 #ifdef _IRR_WINDOWS_
-#define _CRT_SECURE_NO_WARNINGS //Stopt MSVC sich über sprintf() zu beschweren
+#define _CRT_SECURE_NO_WARNINGS //Stopt MSVC sich ï¿½ber sprintf() zu beschweren
 #pragma comment (lib, "Irrlicht.lib")
 #endif
 
@@ -39,16 +39,16 @@ int main()
 		manager.addGameState(intro);
 		manager.addGameState(Menu);
 		manager.changeGameState("intro");
-		if((intro->isFinished()) == true)
-		{
-			manager.changeGameState("menu");
-
-		}
-
 
 		while(device->run())
 		{
 			device->getVideoDriver()->beginScene(true,true,video::SColor(255,255,255,255));
+			
+			if((intro->isFinished()) == true)
+			{
+				manager.changeGameState("menu");
+			}
+
  			manager.render();
  			device->getVideoDriver()->endScene();
 		}
