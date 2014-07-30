@@ -81,7 +81,7 @@ void Intro::render()
 	else if((time - timeStamp) >= 10000)
 		size = core::rect<s32>(514, 0, 642, 128);
 
-	else if((time - timeStamp) >= 15000)
+	if((time - timeStamp) >= 15000)
 		finished(true);
 
 	device->getVideoDriver()->draw2DImage(image, core::position2d<s32>(200,200), size, 0, video::SColor(255,255,255,255), true);
