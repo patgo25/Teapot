@@ -27,8 +27,6 @@ enum
 	GAMESTATE_ID = 201
 };
 
-scene::ISceneManager* smgr;
-video::IVideoDriver* driver;
 int main()
 {
 
@@ -44,7 +42,7 @@ int main()
 		{
 			device->getVideoDriver()->beginScene(true,true,video::SColor(255,255,255,255));
 			
-			if((intro->isFinished()) == true)
+			if((intro->isFinished()) == true && Menu->isActive() == false)
 			{
 				manager.changeGameState("menu");
 			}

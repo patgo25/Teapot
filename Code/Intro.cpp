@@ -66,8 +66,7 @@ void Intro::OnEvent()
 void Intro::OnLeave()
 {
 	//Am Ende des Intros
-	image->drop();
-	device->getVideoDriver()->drop();
+	
 }
 
 void Intro::render()

@@ -1,7 +1,7 @@
-﻿Build started 29.07.2014 23:22:58.
+﻿Build started 30.07.2014 16:23:19.
      1>Project "C:\Users\Patrick\Desktop\Teapot\Code\Irrlicht1.vcxproj" on node 2 (build target(s)).
      1>InitializeBuildStatus:
-         Creating "Debug\Irrlicht1.unsuccessfulbuild" because "AlwaysCreate" was specified.
+         Touching "Debug\Irrlicht1.unsuccessfulbuild".
        ClCompile:
          All outputs are up-to-date.
          C:\Program Files\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"StdAfx.h" /Fp"Debug\Irrlicht1.pch" /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt Irrlicht1.cpp
@@ -26,4 +26,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:05.17
+Time Elapsed 00:00:04.10
