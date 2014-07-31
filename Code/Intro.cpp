@@ -38,7 +38,6 @@ void Intro::render()
 {
 	u32 time = (device->getTimer()->getTime());
 	std::cout << time - timeStamp << std::endl;
-	//device->getVideoDriver()->draw2DImage(image, core::recti(0, 0, 400, 440), core::recti(500, 220, 632, 280));
 	if ((time - timeStamp) >= 3000 && (time - timeStamp) <= 8000)
 	{
 		//OpenGL Logo
