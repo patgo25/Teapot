@@ -19,7 +19,11 @@ private:
 	~GameStateManager(void);
 	GameStateManager operator = (const GameStateManager&);
 
+	
+
 public:
+
+
 	static GameStateManager& getInstance()
 	{
 		static GameStateManager instance;
