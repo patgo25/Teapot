@@ -36,7 +36,7 @@ int main()
 		StartMenu* Menu = new StartMenu("menu");
 		manager.addGameState(intro);
 		manager.addGameState(Menu);
-		manager.changeGameState("menu");
+		manager.changeGameState("intro");
 
 		while(device->run())
 		{
