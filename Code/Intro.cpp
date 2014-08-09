@@ -18,7 +18,7 @@ Intro::~Intro(void)
 
 void Intro::OnEnter()
 {
-	image = device->getVideoDriver()->getTexture("../Media/test.png");
+	image = device->getVideoDriver()->getTexture("../Media/introsprit.png");
 	pos = core::position2d<s32>(150, 200);
 	size = core::rect<s32>(75, 350, 604, 775);
 	timeStamp = device->getTimer()->getTime();
