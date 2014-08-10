@@ -39,13 +39,13 @@ int main()
 		manager.addGameState(intro);
 		manager.addGameState(Menu);
 		manager.addGameState(test);
-		manager.changeGameState("test");
+		manager.changeGameState("intro");
 
 		while(device->run())
 		{
 			device->getVideoDriver()->beginScene(true,true,video::SColor(255,255,255,255));
 
-			if((((intro->isFinished()) == true && Menu->isActive() == false)) || (test->isFinished() == true && Menu->isActive() == false))
+			if(((intro->isFinished()) == true && Menu->isActive() == false  && test->isActive() == false) || (test->isFinished() == true && Menu->isActive() == false))
 			{
 				manager.changeGameState("menu");
 			}
