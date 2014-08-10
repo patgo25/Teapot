@@ -30,10 +30,8 @@ gui::IGUIWindow *exitWindow;
 gui::IGUIListBox *fpsList;
 gui::IGUISkin *skin;
 gui::IGUIFont *font;
-scene::ISceneNode* node, *licht, *wasser;
+scene::ISceneNode* node;
 scene::IVolumeLightSceneNode * n;
-video::ITexture* t, *stone, *water, *wall;
-core::array<video::ITexture*> textures;
 
 int fps;
 
@@ -81,9 +79,8 @@ void StartMenu::OnEnter()
 	 
 
 	//Mash mit Steinen Pflastern
-	node = smgr->addAnimatedMeshSceneNode(mesh);
-	wall = driver->getTexture("../Media/wall.jpg");
-    node->setMaterialTexture(0, wall);
+	 node = smgr->addAnimatedMeshSceneNode(mesh);
+    node->setMaterialTexture(0, driver->getTexture("../Media/wall.jpg"));
     node->getMaterial(0).SpecularColor.set(0,0,0,0);
 
 	//Boden wässern
@@ -93,15 +90,13 @@ void StartMenu::OnEnter()
 		core::dimension2d<f32>(0,0),
 		core::dimension2d<f32>(10,10));
 
-	wasser= smgr->addWaterSurfaceSceneNode(mesh->getMesh(0),3.0f,300.0f,30.0f);
-	wasser->setPosition(core::vector3df(0,7,0));
+	node= smgr->addWaterSurfaceSceneNode(mesh->getMesh(0),3.0f,300.0f,30.0f);
+	node->setPosition(core::vector3df(0,7,0));
 
-	stone = driver->getTexture("../Media/stones.jpg");
-	water = driver->getTexture("../Media/water.jpg");
-	wasser->setMaterialTexture(0, stone);
-	wasser->setMaterialTexture(0, water);
+	node->setMaterialTexture(0, driver->getTexture("../Media/stones.jpg"));
+	node->setMaterialTexture(0, driver->getTexture("../Media/water.jpg"));
 
-	wasser->setMaterialType(video::EMT_REFLECTION_2_LAYER);
+	node->setMaterialType(video::EMT_REFLECTION_2_LAYER);
 
 	//Kamera einfügen
 	camera = smgr->addCameraSceneNode(0,core::vector3df(0,0,0), core::vector3df(0,0,100), 2, true);
@@ -114,7 +109,7 @@ void StartMenu::OnEnter()
 	anim->drop();
 
 	//Und ich sprach es werde Licht ;)
-	licht = smgr->addLightSceneNode(0, camera->getAbsolutePosition(),video::SColorf(0.0f,0.5f,1.0f,1.0f), 8000.0f);
+	node = smgr->addLightSceneNode(0, camera->getAbsolutePosition(),video::SColorf(0.0f,0.5f,1.0f,1.0f), 8000.0f);
 
 	n = smgr->addVolumeLightSceneNode(0, -1,
                 32,                              
@@ -128,14 +123,14 @@ void StartMenu::OnEnter()
         n->setPosition(core::vector3df(-90,50,50));
 
         
-        
+        core::array<video::ITexture*> textures;
         for (s32 g=7; g > 0; --g)
         {
             core::stringc tmp;
             tmp = "../Media/portal";
             tmp += g;
             tmp += ".bmp";
-            t = driver->getTexture( tmp.c_str() );
+            video::ITexture* t = driver->getTexture( tmp.c_str() );
             textures.push_back(t);
         }
 
@@ -148,7 +143,7 @@ void StartMenu::OnEnter()
         glow->drop();
     }
 
-	licht = smgr->addLightSceneNode(0, core::vector3df(-80,100,40),video::SColorf(1.0f,1.0f,1.0f,1.0f), 100.0f);
+	node = smgr->addLightSceneNode(0, core::vector3df(-80,100,40),video::SColorf(1.0f,1.0f,1.0f,1.0f), 100.0f);
 
 	//Knöpfe
 	newGameButton = env->addButton(core::rect<s32>(10,50,200,100),0, GUI_ID_NEW_GAME_BUTTON, L"Neues Spiel", L"Startet ein neues Spiel");
@@ -321,11 +316,14 @@ bool StartMenu::OnEvent(const SEvent &myevent)
 
 void StartMenu::OnLeave()
 {
-	node->remove();
+	
+	camera->removeAll();
+	camera = 0;
+	node->removeAll();
 	node = 0;
-	wasser->remove();
-	wasser = 0;
-	n->remove();
+	mesh = 0;
+	driver->removeAllTextures();
+	n->removeAll();
 	n = 0;
 
 	newGameButton->setVisible(false);
@@ -333,7 +331,6 @@ void StartMenu::OnLeave()
 	optionsButton->setVisible(false);
 	creditsButton->setVisible(false);
 	exitButton->setVisible(false);
-	titel->setVisible(false);
 
 	std::cout<<"Menu-State beendet"<<std::endl;
 }
