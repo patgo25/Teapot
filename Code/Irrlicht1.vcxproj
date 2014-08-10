@@ -84,6 +84,7 @@
     <ClInclude Include="GameStateManager.h" />
     <ClInclude Include="Intro.h" />
     <ClInclude Include="ResManager.h" />
+    <ClInclude Include="SampleGame.h" />
     <ClInclude Include="StartMenu.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
@@ -95,6 +96,7 @@
     <ClCompile Include="Irrlicht1.cpp" />
     <ClCompile Include="EventReceiver.cpp" />
     <ClCompile Include="ResManager.cpp" />
+    <ClCompile Include="SampleGame.cpp" />
     <ClCompile Include="StartMenu.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

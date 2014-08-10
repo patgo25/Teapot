@@ -1,6 +1,7 @@
 #include "StdAfx.h"
 #include "StartMenu.h"
 #include "GameStateManager.h"
+#include <iostream>
 
 
 
@@ -20,12 +21,17 @@ gui::IGUIEnvironment* env;
 video::IVideoDriver* driver;
 scene::ISceneManager* smgr;
 
+scene::IAnimatedMesh* mesh;
+scene::ICameraSceneNode* camera;
+
 gui::IGUIStaticText *titel, *debug;
 gui::IGUIButton *saveButton, *backButton, *newGameButton, *loadGameButton, *optionsButton, *creditsButton, *exitButton;
 gui::IGUIWindow *exitWindow;
 gui::IGUIListBox *fpsList;
 gui::IGUISkin *skin;
 gui::IGUIFont *font;
+scene::ISceneNode* node;
+scene::IVolumeLightSceneNode * n;
 
 int fps;
 
@@ -34,7 +40,7 @@ StartMenu::StartMenu(void)
 	env = device->getGUIEnvironment();
 	driver = device->getVideoDriver();
 	smgr = device->getSceneManager();
-
+	newGame = false;
 
 }
 
@@ -43,7 +49,8 @@ StartMenu::StartMenu(core::stringc newName) : GameState(newName)
 	env = device->getGUIEnvironment();
 	driver = device->getVideoDriver();
 	smgr = device->getSceneManager();
-	
+	newGame = false;
+
 }
 
 
@@ -53,23 +60,26 @@ StartMenu::~StartMenu(void)
 
 void StartMenu::OnEnter()
 {
+	std::cout<<"Menu-State gestartet:"<<std::endl;
 	//Font personalisieren
 	skin = env->getSkin();
 	font = env->getFont("../Media/fonts/celtic/celtic.xml");
-	
+	mesh = 0;
+	node = 0;
+
 	if(font)
 		skin->setFont(font);
 
 	titel = env->addStaticText(L"The celestial teapot", core::rect<s32>(280, 10, 1000, 80),false,false,0,1,false);
 
 	//Mesh laden
-	scene::IAnimatedMesh* mesh = smgr->getMesh("../Media/room.3ds");
+	mesh = smgr->getMesh("../Media/room.3ds");
 	smgr->getMeshManipulator()->makePlanarTextureMapping(mesh->getMesh(0), 0.004f);
 
-	scene::ISceneNode* node = 0;
+	 
 
 	//Mash mit Steinen Pflastern
-	node = smgr->addAnimatedMeshSceneNode(mesh);
+	 node = smgr->addAnimatedMeshSceneNode(mesh);
     node->setMaterialTexture(0, driver->getTexture("../Media/wall.jpg"));
     node->getMaterial(0).SpecularColor.set(0,0,0,0);
 
@@ -89,7 +99,7 @@ void StartMenu::OnEnter()
 	node->setMaterialType(video::EMT_REFLECTION_2_LAYER);
 
 	//Kamera einfügen
-	scene::ICameraSceneNode* camera = smgr->addCameraSceneNode();
+	camera = smgr->addCameraSceneNode(0,core::vector3df(0,0,0), core::vector3df(0,0,100), 2, true);
 	camera->setPosition(core::vector3df(-10,100,-150));
     camera->setFarValue(1000.0f);
 
@@ -101,7 +111,7 @@ void StartMenu::OnEnter()
 	//Und ich sprach es werde Licht ;)
 	node = smgr->addLightSceneNode(0, camera->getAbsolutePosition(),video::SColorf(0.0f,0.5f,1.0f,1.0f), 8000.0f);
 
-	scene::IVolumeLightSceneNode * n = smgr->addVolumeLightSceneNode(0, -1,
+	n = smgr->addVolumeLightSceneNode(0, -1,
                 32,                              
                 32,                              
                 video::SColor(255, 255, 255, 255), 
@@ -201,6 +211,8 @@ bool StartMenu::OnEvent(const SEvent &myevent)
 
 			case GUI_ID_NEW_GAME_BUTTON:
 				//wechsel auf MainGameState einfügen
+				newGame = true;
+				finished(true);
 				return true;
 
 			case GUI_ID_LOAD_GAME_BUTTON:
@@ -304,6 +316,23 @@ bool StartMenu::OnEvent(const SEvent &myevent)
 
 void StartMenu::OnLeave()
 {
+	
+	camera->removeAll();
+	camera = 0;
+	node->removeAll();
+	node = 0;
+	mesh = 0;
+	driver->removeAllTextures();
+	n->removeAll();
+	n = 0;
+
+	newGameButton->setVisible(false);
+	loadGameButton->setVisible(false);
+	optionsButton->setVisible(false);
+	creditsButton->setVisible(false);
+	exitButton->setVisible(false);
+
+	std::cout<<"Menu-State beendet"<<std::endl;
 }
 
 void StartMenu::render()

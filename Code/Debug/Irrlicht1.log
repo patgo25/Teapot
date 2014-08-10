@@ -1,4 +1,4 @@
-﻿Build started 02.08.2014 01:46:50.
+﻿Build started 10.08.2014 02:59:09.
      1>Project "C:\Users\Patrick\Desktop\Teapot\Code\Irrlicht1.vcxproj" on node 2 (build target(s)).
      1>InitializeBuildStatus:
          Creating "Debug\Irrlicht1.unsuccessfulbuild" because "AlwaysCreate" was specified.
@@ -13,6 +13,7 @@
          Debug\Irrlicht1.obj
          Debug\EventReceiver.obj
          Debug\ResManager.obj
+         Debug\SampleGame.obj
          Debug\StartMenu.obj
          Debug\stdafx.obj
      1>GameState.obj : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/INCREMENTAL:NO' specification
@@ -26,4 +27,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:04.40
+Time Elapsed 00:00:05.32

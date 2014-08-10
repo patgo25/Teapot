@@ -8,6 +8,7 @@
 #include "GameStateManager.h"
 #include "Intro.h"
 #include "StartMenu.h"
+#include "SampleGame.h"
 
 using namespace irr;
 
@@ -34,18 +35,27 @@ int main()
 	{
 		Intro* intro = new Intro("intro");
 		StartMenu* Menu = new StartMenu("menu");
+		SampleGame* test = new SampleGame("test");
 		manager.addGameState(intro);
 		manager.addGameState(Menu);
-		manager.changeGameState("intro");
+		manager.addGameState(test);
+		manager.changeGameState("test");
 
 		while(device->run())
 		{
 			device->getVideoDriver()->beginScene(true,true,video::SColor(255,255,255,255));
-			
-			if((intro->isFinished()) == true && Menu->isActive() == false)
+
+			if((((intro->isFinished()) == true && Menu->isActive() == false)) || (test->isFinished() == true && Menu->isActive() == false))
 			{
 				manager.changeGameState("menu");
 			}
+
+
+			else if((Menu->isFinished()) == true && test->isActive() == false && Menu->newGame == true)
+			{
+				manager.changeGameState("test");
+			}
+
 
  			manager.render();
  			device->getVideoDriver()->endScene();
