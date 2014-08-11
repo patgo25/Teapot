@@ -1,6 +1,7 @@
 #include "StdAfx.h"
 #include "StartMenu.h"
 #include "GameStateManager.h"
+#include "SettingManager.h"
 #include <iostream>
 
 
@@ -43,7 +44,6 @@ StartMenu::StartMenu(void)
 	driver = device->getVideoDriver();
 	smgr = device->getSceneManager();
 	newGame = false;
-
 }
 
 StartMenu::StartMenu(core::stringc newName) : GameState(newName)
@@ -52,7 +52,6 @@ StartMenu::StartMenu(core::stringc newName) : GameState(newName)
 	driver = device->getVideoDriver();
 	smgr = device->getSceneManager();
 	newGame = false;
-
 }
 
 

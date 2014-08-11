@@ -9,6 +9,7 @@
 #include "Intro.h"
 #include "StartMenu.h"
 #include "SampleGame.h"
+#include "Debuger.h"
 
 using namespace irr;
 
@@ -31,7 +32,7 @@ enum
 int main()
 {
 
-	if(manager.initalize(800,640,false))
+	if(manager.initalize(800,600,false))
 	{
 		Intro* intro = new Intro("intro");
 		StartMenu* Menu = new StartMenu("menu");
@@ -40,6 +41,9 @@ int main()
 		manager.addGameState(Menu);
 		manager.addGameState(test);
 		manager.changeGameState("intro");
+
+		Debuger* dtest = new Debuger();
+		//dtest->run();
 
 		while(device->run())
 		{
@@ -56,7 +60,7 @@ int main()
 				manager.changeGameState("test");
 			}
 
-
+			//dtest->draw();
  			manager.render();
  			device->getVideoDriver()->endScene();
 		}
